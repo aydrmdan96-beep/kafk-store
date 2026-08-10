@@ -1,14 +1,132 @@
-متجر كافك
-🛒 السلة (0)
-متجر كافك
-تصاميم وملفات رقمية جاهزة للشراء
-منتجاتنا
-اختر المنتج الذي تريده
-غلاف كتاب
-غلاف كتاب
-ملف رقمي جاهز بصيغة ZIP، يحتوي على المنتج الذي اخترته.
-5,000 د.ع
-أضف إلى السلة
-بعد إتمام الطلب يمكنك التواصل عبر حساب Instagram لإتمام عملية الدفع والاستلام.
-متجر كافك © 2026
-Instagram
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>كافك Store</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f5f7;
+  color:#222;
+}
+header{
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:35px 20px;
+}
+header h1{
+  margin:0 0 12px;
+  font-size:38px;
+}
+header p{
+  margin:0;
+  font-size:19px;
+  color:#ddd;
+}
+main{
+  max-width:700px;
+  margin:30px auto;
+  padding:0 18px;
+}
+.card{
+  background:#fff;
+  border-radius:22px;
+  padding:25px;
+  text-align:center;
+  box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+.book{
+  width:100%;
+  max-height:500px;
+  border:0;
+  border-radius:14px;
+  margin-bottom:20px;
+}
+h2{
+  font-size:30px;
+  margin:10px 0;
+}
+.note{
+  color:#666;
+  line-height:1.8;
+  font-size:17px;
+}
+.price{
+  font-size:30px;
+  font-weight:bold;
+  margin:20px 0;
+}
+.btn{
+  display:inline-block;
+  background:#18a558;
+  color:#fff;
+  text-decoration:none;
+  padding:16px 28px;
+  border-radius:14px;
+  font-size:20px;
+  font-weight:bold;
+}
+.download{
+  display:block;
+  margin-top:15px;
+  color:#18a558;
+  font-size:17px;
+}
+footer{
+  text-align:center;
+  color:#777;
+  padding:30px 15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>كافك Store</h1>
+  <p>كتب وتصاميم رقمية مميزة</p>
+</header>
+
+<main>
+  <div class="card">
+
+    <iframe
+      class="book"
+      src="./ghilaf-kitab-compressed(1).pdf">
+    </iframe>
+
+    <h2>غلاف الكتاب</h2>
+
+    <p class="note">
+      كتاب رقمي مميز يمكنك طلبه عبر حسابنا على إنستغرام.
+      بعد إتمام الطلب سيتم تزويدك بالملف.
+    </p>
+
+    <div class="price">
+      5,000 دينار عراقي
+    </div>
+
+    <a class="btn"
+       href="https://www.instagram.com/">
+       اطلب عبر إنستغرام
+    </a>
+
+    <a class="download"
+       href="./ghilaf-kitab-compressed(1).pdf">
+       📖 معاينة / فتح الكتاب
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  © 2026 كافك Store
+</footer>
+
+</body>
+</html>
