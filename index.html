@@ -1,25 +1,50 @@
-!doctype html>
-
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
-<meta charset="utf-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>كافك Store</title>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>متجر كافك</title>
 <style>
-
-*{box-sizing:border-box}
-
-body{
-
-  margin:0;
-
-  font-family:Arial,sans-serif;
-
-  background:#f4f5f7;
-
-  color:#222;
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f7f7f8;color:#202124}a{text-decoration:none;color:inherit}
+.top{background:#111827;color:#fff;text-align:center;padding:9px}
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #e5e7eb}
+.nav{max-width:1100px;margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-size:24px;font-weight:900}.brand span{color:#e11d48}.links{display:flex;gap:18px;font-weight:700;color:#4b5563}
+button,.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer}.cart,.add{background:#111827;color:#fff}
+.hero{max-width:1100px;margin:20px auto;padding:55px 20px;border-radius:24px;background:linear-gradient(135deg,#111827,#374151);color:#fff;text-align:center}
+.hero h1{font-size:clamp(30px,7vw,52px);margin:0 0 12px}.hero p{max-width:650px;margin:0 auto 22px;line-height:1.8;color:#e5e7eb}.btn{display:inline-block;background:#e11d48;color:#fff}
+main{max-width:1100px;margin:auto;padding:0 18px 50px}.title{text-align:center;margin:40px 0 20px}.title h2{margin:0 0 6px}.title p{margin:0;color:#6b7280}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.product{background:#fff;border:1px solid #e5e7eb;border-radius:18px;overflow:hidden;box-shadow:0 5px 20px #0000000d}
+.product img{width:100%;aspect-ratio:1;object-fit:cover;display:block}.info{padding:15px}.info h3{margin:0 0 8px}.info p{color:#6b7280;line-height:1.6}.price{color:#e11d48;font-size:20px;font-weight:900;margin:10px 0}.add{width:100%}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.feature{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:20px;text-align:center}.feature p{color:#6b7280;line-height:1.6}
+footer{background:#111827;color:#d1d5db;text-align:center;padding:35px 15px}.social{display:flex;justify-content:center;gap:10px;margin-top:12px}.social a{background:#374151;padding:9px 14px;border-radius:9px}
+.panel{display:none;position:fixed;inset:0;background:#0007;z-index:30}.panel.open{display:block}.box{position:absolute;right:0;top:0;width:min(420px,94vw);height:100%;background:#fff;padding:20px;overflow:auto}
+.head{display:flex;justify-content:space-between;border-bottom:1px solid #eee;padding-bottom:10px}.close{background:#eee}.item{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #eee}.total{font-size:20px;font-weight:900;margin:18px 0}.wa{width:100%;background:#16a34a;color:#fff}
+@media(max-width:760px){.links{display:none}.products{grid-template-columns:repeat(2,1fr);gap:12px}.features{grid-template-columns:1fr}.hero{margin:12px;padding:42px 18px}main{padding:0 12px 40px}.info{padding:12px}.info h3{font-size:16px}.info p{font-size:13px}}
+@media(max-width:390px){.products{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="top">🚚 توصيل داخل العراق — اطلب الآن بسهولة</div>
+<header><nav class="nav"><a class="brand" href="#">متجر <span>كافك</span></a><div class="links"><a href="#products">المنتجات</a><a href="#features">لماذا نحن؟</a><a href="#contact">تواصل معنا</a></div><button class="cart" onclick="openCart()">🛒 السلة (<span id="count">0</span>)</button></nav></header>
+<section class="hero"><h1>أهلاً بك في متجر كافك</h1><p>اكتشف منتجاتنا واختر ما يناسبك، ثم أرسل طلبك مباشرة عبر واتساب.</p><a class="btn" href="#products">تصفح المنتجات</a></section>
+<main>
+<section id="products"><div class="title"><h2>منتجاتنا</h2><p>غيّر أسماء المنتجات والصور والأسعار لاحقاً.</p></div><div class="products">
+<article class="product"><img src="https://placehold.co/700x700/png?text=Product+1" alt="المنتج الأول"><div class="info"><h3>المنتج الأول</h3><p>وصف قصير للمنتج.</p><div class="price">25,000 د.ع</div><button class="add" onclick="add('المنتج الأول',25000)">أضف إلى السلة</button></div></article>
+<article class="product"><img src="https://placehold.co/700x700/png?text=Product+2" alt="المنتج الثاني"><div class="info"><h3>المنتج الثاني</h3><p>وصف قصير للمنتج.</p><div class="price">30,000 د.ع</div><button class="add" onclick="add('المنتج الثاني',30000)">أضف إلى السلة</button></div></article>
+<article class="product"><img src="https://placehold.co/700x700/png?text=Product+3" alt="المنتج الثالث"><div class="info"><h3>المنتج الثالث</h3><p>وصف قصير للمنتج.</p><div class="price">35,000 د.ع</div><button class="add" onclick="add('المنتج الثالث',35000)">أضف إلى السلة</button></div></article>
+</div></section>
+<section id="features"><div class="title"><h2>لماذا متجرنا؟</h2><p>خدمة بسيطة وسريعة</p></div><div class="features"><div class="feature">🚚<h3>توصيل</h3><p>توصيل حسب منطقتك.</p></div><div class="feature">💬<h3>طلب عبر واتساب</h3><p>أرسل تفاصيل طلبك مباشرة.</p></div><div class="feature">🔒<h3>طلب سهل</h3><p>اختر منتجاتك ثم أرسل الطلب.</p></div></div></section>
+</main>
+<footer id="contact"><strong>متجر كافك</strong><div>تابعنا وتواصل معنا</div><div class="social"><a href="#">Instagram</a><a href="#">WhatsApp</a></div><p>© 2026 متجر كافك — جميع الحقوق محفوظة</p></footer>
+<div class="panel" id="panel" onclick="closeCart(event)"><div class="box" onclick="event.stopPropagation()"><div class="head"><h2>سلة المشتريات</h2><button class="close" onclick="closeCart()">إغلاق</button></div><div id="items"></div><div class="total">المجموع: <span id="total">0</span> د.ع</div><button class="wa" onclick="sendOrder()">📱 إرسال الطلب عبر واتساب</button></div></div>
+<script>
+const WHATSAPP_NUMBER='9647XXXXXXXXX';let cart=[];
+function add(name,price){cart.push({name,price});document.getElementById('count').textContent=cart.length;render();openCart()}
+function render(){let box=document.getElementById('items'),sum=0;if(!cart.length){box.innerHTML='<p>السلة فارغة.</p>';document.getElementById('total').textContent='0';return}box.innerHTML=cart.map((x,i)=>{sum+=x.price;return `<div class="item"><div><b>${x.name}</b><br>${x.price.toLocaleString('ar-IQ')} د.ع</div><button class="close" onclick="removeItem(${i})">حذف</button></div>`}).join('');document.getElementById('total').textContent=sum.toLocaleString('ar-IQ')}
+function removeItem(i){cart.splice(i,1);document.getElementById('count').textContent=cart.length;render()}
+function openCart(){document.getElementById('panel').classList.add('open');render()}
+function closeCart(e){if(!e||e.target===document.getElementById('panel'))document.getElementById('panel').classList.remove('open')}
+function sendOrder(){if(!cart.length){alert('السلة فارغة.');return}let lines=cart.map((x,i)=>`${i+1}- ${x.name} — ${x.price.toLocaleString('ar-IQ')} د.ع`).join('\n');let total=cart.reduce((s,x)=>s+x.price,0);let msg=encodeURIComponent('السلام عليكم، أريد طلب المنتجات التالية:\n\n'+lines+'\n\nالمجموع: '+total.toLocaleString('ar-IQ')+' د.ع');window.open('https://wa.me/'+WHATSAPP_NUMBER+'?text='+msg,'_blank')}
+</script>
+</body></html>
