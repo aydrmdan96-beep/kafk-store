@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Interactive English Alphabet Book for Kids">
+<title>My English Alphabet Book</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;background:#6bc7f5;color:#123}
+body{min-height:100vh}
+header{position:sticky;top:0;z-index:20;background:#fff;padding:12px 14px;box-shadow:0 2px 10px #0002;text-align:center}
+header h1{margin:0;font-size:clamp(20px,5vw,30px);color:#1557a6}
+nav{display:flex;gap:6px;overflow:auto;padding:8px 0 2px;justify-content:flex-start}
+nav button{border:0;background:#eef6ff;border-radius:12px;padding:7px 10px;font-weight:800;color:#1557a6;min-width:34px}
+nav button.active{background:#ffd22e}
+.page{min-height:calc(100vh - 92px);display:none;padding:18px 14px 34px}
+.page.active{display:flex;align-items:center;justify-content:center}
+.card{width:min(920px,100%);min-height:calc(100vh - 130px);background:#fff;border:10px solid #ffd22e;border-radius:34px;box-shadow:0 10px 30px #0002;padding:24px 18px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.card:before{content:"";position:absolute;inset:10px;border:3px dashed #fff;pointer-events:none;border-radius:25px}
+.letters{display:flex;align-items:center;justify-content:center;gap:clamp(18px,6vw,60px);width:100%;margin-top:10px}
+.big{font-weight:900;line-height:.8;font-size:clamp(150px,31vw,330px);text-shadow:0 6px 0 #ddd}
+.upper{color:#ef3340} .lower{color:#1557d5}
+.divider{height:clamp(150px,24vw,260px);border-left:5px dashed #67b9ef}
+.picture{font-size:clamp(100px,18vw,180px);line-height:1;margin-top:12px;filter:drop-shadow(0 6px 3px #0002)}
+.word{font-size:clamp(38px,7vw,72px);font-weight:900;color:#183b78;margin:10px 0 20px}
+.word-first{color:#ef3340}
+.sound{position:relative;z-index:2;border:0;border-radius:24px;background:#ffd22e;color:#143b78;font-size:clamp(20px,4vw,34px);font-weight:900;padding:16px 26px;display:flex;align-items:center;gap:14px;box-shadow:0 6px 0 #e0a900;cursor:pointer;touch-action:manipulation}
+.sound:active{transform:translateY(4px);box-shadow:0 2px 0 #e0a900}
+.speaker{background:#2879db;color:#fff;border-radius:50%;width:54px;height:54px;display:inline-flex;align-items:center;justify-content:center;font-size:30px}
+.hint{margin-top:12px;color:#6b7b91;font-size:16px}
+.footer-controls{display:flex;gap:10px;margin-top:16px;z-index:2}
+.footer-controls button{border:0;border-radius:14px;background:#eaf4ff;color:#1557a6;font-weight:800;padding:10px 16px;font-size:16px}
+@media (max-width:600px){
+  .card{border-width:7px;border-radius:24px;padding:12px 10px 20px}
+  .letters{gap:12px}
+  .sound{padding:13px 16px}
+  .speaker{width:46px;height:46px;font-size:25px}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>🌟 My English Alphabet Book 🌟</h1>
+  <nav id="nav"></nav>
+</header>
+<main>
+
+    <section class="page" id="page-A">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">A</div>
+          <div class="divider"></div>
+          <div class="big lower">a</div>
+        </div>
+        <div class="picture">🍎</div>
+        <div class="word"><span class="word-first">A</span>pple</div>
+        <button class="sound" onclick="speakLetter('A')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>A</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-B">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">B</div>
+          <div class="divider"></div>
+          <div class="big lower">b</div>
+        </div>
+        <div class="picture">⚽</div>
+        <div class="word"><span class="word-first">B</span>all</div>
+        <button class="sound" onclick="speakLetter('B')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>B</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-C">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">C</div>
+          <div class="divider"></div>
+          <div class="big lower">c</div>
+        </div>
+        <div class="picture">🐱</div>
+        <div class="word"><span class="word-first">C</span>at</div>
+        <button class="sound" onclick="speakLetter('C')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>C</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-D">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">D</div>
+          <div class="divider"></div>
+          <div class="big lower">d</div>
+        </div>
+        <div class="picture">🐶</div>
+        <div class="word"><span class="word-first">D</span>og</div>
+        <button class="sound" onclick="speakLetter('D')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>D</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-E">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">E</div>
+          <div class="divider"></div>
+          <div class="big lower">e</div>
+        </div>
+        <div class="picture">🐘</div>
+        <div class="word"><span class="word-first">E</span>lephant</div>
+        <button class="sound" onclick="speakLetter('E')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>E</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-F">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">F</div>
+          <div class="divider"></div>
+          <div class="big lower">f</div>
+        </div>
+        <div class="picture">🐟</div>
+        <div class="word"><span class="word-first">F</span>ish</div>
+        <button class="sound" onclick="speakLetter('F')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>F</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-G">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">G</div>
+          <div class="divider"></div>
+          <div class="big lower">g</div>
+        </div>
+        <div class="picture">🦒</div>
+        <div class="word"><span class="word-first">G</span>iraffe</div>
+        <button class="sound" onclick="speakLetter('G')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>G</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-H">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">H</div>
+          <div class="divider"></div>
+          <div class="big lower">h</div>
+        </div>
+        <div class="picture">🏠</div>
+        <div class="word"><span class="word-first">H</span>ouse</div>
+        <button class="sound" onclick="speakLetter('H')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>H</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-I">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">I</div>
+          <div class="divider"></div>
+          <div class="big lower">i</div>
+        </div>
+        <div class="picture">🍦</div>
+        <div class="word"><span class="word-first">I</span>ce cream</div>
+        <button class="sound" onclick="speakLetter('I')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>I</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-J">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">J</div>
+          <div class="divider"></div>
+          <div class="big lower">j</div>
+        </div>
+        <div class="picture">🧃</div>
+        <div class="word"><span class="word-first">J</span>uice</div>
+        <button class="sound" onclick="speakLetter('J')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>J</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-K">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">K</div>
+          <div class="divider"></div>
+          <div class="big lower">k</div>
+        </div>
+        <div class="picture">🪁</div>
+        <div class="word"><span class="word-first">K</span>ite</div>
+        <button class="sound" onclick="speakLetter('K')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>K</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-L">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">L</div>
+          <div class="divider"></div>
+          <div class="big lower">l</div>
+        </div>
+        <div class="picture">🦁</div>
+        <div class="word"><span class="word-first">L</span>ion</div>
+        <button class="sound" onclick="speakLetter('L')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>L</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-M">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">M</div>
+          <div class="divider"></div>
+          <div class="big lower">m</div>
+        </div>
+        <div class="picture">🐒</div>
+        <div class="word"><span class="word-first">M</span>onkey</div>
+        <button class="sound" onclick="speakLetter('M')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>M</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-N">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">N</div>
+          <div class="divider"></div>
+          <div class="big lower">n</div>
+        </div>
+        <div class="picture">🌙</div>
+        <div class="word"><span class="word-first">N</span>oon</div>
+        <button class="sound" onclick="speakLetter('N')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>N</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-O">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">O</div>
+          <div class="divider"></div>
+          <div class="big lower">o</div>
+        </div>
+        <div class="picture">🍊</div>
+        <div class="word"><span class="word-first">O</span>range</div>
+        <button class="sound" onclick="speakLetter('O')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>O</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-P">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">P</div>
+          <div class="divider"></div>
+          <div class="big lower">p</div>
+        </div>
+        <div class="picture">🐼</div>
+        <div class="word"><span class="word-first">P</span>anda</div>
+        <button class="sound" onclick="speakLetter('P')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>P</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-Q">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">Q</div>
+          <div class="divider"></div>
+          <div class="big lower">q</div>
+        </div>
+        <div class="picture">👑</div>
+        <div class="word"><span class="word-first">Q</span>ueen</div>
+        <button class="sound" onclick="speakLetter('Q')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>Q</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-R">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">R</div>
+          <div class="divider"></div>
+          <div class="big lower">r</div>
+        </div>
+        <div class="picture">🌈</div>
+        <div class="word"><span class="word-first">R</span>ainbow</div>
+        <button class="sound" onclick="speakLetter('R')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>R</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-S">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">S</div>
+          <div class="divider"></div>
+          <div class="big lower">s</div>
+        </div>
+        <div class="picture">☀️</div>
+        <div class="word"><span class="word-first">S</span>un</div>
+        <button class="sound" onclick="speakLetter('S')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>S</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-T">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">T</div>
+          <div class="divider"></div>
+          <div class="big lower">t</div>
+        </div>
+        <div class="picture">🐯</div>
+        <div class="word"><span class="word-first">T</span>iger</div>
+        <button class="sound" onclick="speakLetter('T')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>T</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-U">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">U</div>
+          <div class="divider"></div>
+          <div class="big lower">u</div>
+        </div>
+        <div class="picture">☂️</div>
+        <div class="word"><span class="word-first">U</span>mbrella</div>
+        <button class="sound" onclick="speakLetter('U')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>U</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-V">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">V</div>
+          <div class="divider"></div>
+          <div class="big lower">v</div>
+        </div>
+        <div class="picture">🎻</div>
+        <div class="word"><span class="word-first">V</span>iolin</div>
+        <button class="sound" onclick="speakLetter('V')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>V</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-W">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">W</div>
+          <div class="divider"></div>
+          <div class="big lower">w</div>
+        </div>
+        <div class="picture">🐳</div>
+        <div class="word"><span class="word-first">W</span>hale</div>
+        <button class="sound" onclick="speakLetter('W')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>W</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-X">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">X</div>
+          <div class="divider"></div>
+          <div class="big lower">x</div>
+        </div>
+        <div class="picture">🎼</div>
+        <div class="word"><span class="word-first">X</span>ylophone</div>
+        <button class="sound" onclick="speakLetter('X')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>X</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-Y">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">Y</div>
+          <div class="divider"></div>
+          <div class="big lower">y</div>
+        </div>
+        <div class="picture">🪀</div>
+        <div class="word"><span class="word-first">Y</span>o-yo</div>
+        <button class="sound" onclick="speakLetter('Y')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>Y</b></div>
+      </div>
+    </section>
+    
+    <section class="page" id="page-Z">
+      <div class="card">
+        <div class="letters">
+          <div class="big upper">Z</div>
+          <div class="divider"></div>
+          <div class="big lower">z</div>
+        </div>
+        <div class="picture">🦓</div>
+        <div class="word"><span class="word-first">Z</span>ebra</div>
+        <button class="sound" onclick="speakLetter('Z')">
+          <span class="speaker">🔊</span>
+          <span>Listen to the letter</span>
+        </button>
+        <div class="hint">Tap the button to hear <b>Z</b></div>
+      </div>
+    </section>
+    
+</main>
+<script>
+const letterList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+function speakLetter(letter) {
+  if (!('speechSynthesis' in window)) {
+    alert('Your browser does not support speech. Please open this book in Safari or Chrome.');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(letter);
+  u.lang = 'en-US';
+  u.rate = 0.72;
+  u.pitch = 1.05;
+  window.speechSynthesis.speak(u);
+}
+
+const nav = document.getElementById('nav');
+const pages = [...document.querySelectorAll('.page')];
+letterList.forEach((L, i) => {
+  const b = document.createElement('button');
+  b.textContent = L;
+  b.onclick = () => showPage(i);
+  nav.appendChild(b);
+});
+
+function showPage(i) {
+  pages.forEach((p,j)=>p.classList.toggle('active',j===i));
+  [...nav.children].forEach((b,j)=>b.classList.toggle('active',j===i));
+  location.hash = letterList[i];
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+let start = 0;
+const h = location.hash.replace('#','').toUpperCase();
+const found = letterList.indexOf(h);
+if(found >= 0) start = found;
+showPage(start);
+</script>
+</body>
+</html>
